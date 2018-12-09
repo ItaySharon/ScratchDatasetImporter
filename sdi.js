@@ -35,7 +35,7 @@
                   var ret = [];
                   
                   for(var k = 0; k < jsonObj.length; k++) {
-                      ret += jsonObj[k][xHeader] + sep + jsonObj[k][yHeader];
+                      ret += jsonObj[k][xHeader] + sep + jsonObj[k][yHeader] + ",";
                   }
                   
                   callback(ret);
