@@ -62,7 +62,7 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            ['R', 'Parse csv from %s where X is %s, Y is %s and the fomat is X%sY', 'loadDataset', 'http://code.questematic.com/sjlv/', 'total_rooms', 'median_house_value', '|'],
+            ['R', 'Parse csv from %s where X is %s, Y is %s with seperator %s', 'loadDataset', 'https://itaysharon.github.io/cal_dataset.csv', 'total_rooms', 'median_house_value', '|'],
             ['r', 'Shuffle list %s', 'shuffleList', ''],
             ['r', 'Split list %s with seperator %s and get item #%n', 'splitList', '', '|', 0],
         ]
