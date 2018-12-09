@@ -8,7 +8,7 @@
         return {status: 2, msg: 'Ready'};
     };
 
-    ext.loadDataset = function(url, xHeader, yHeader, sep, callback) {
+    ext.loadDataset = function(url, xHeader, yHeader, sep, lsep, callback) {
         // Make an AJAX call to the dataset's URL
         $.ajax({
               url: url,
@@ -17,7 +17,7 @@
                   // Got the data - parse it and return the List, seperated with sep
                   
                   // CSV Parser
-		  var arr = datasetData.split('\n');
+                  var arr = datasetData.split('\n');
                   var jsonObj = [];
                   var headers = arr[0].split(',');
                   
@@ -32,11 +32,13 @@
                       jsonObj.push(obj);
                   }
                   // End of CSV Parser
-                  var ret = [];
+                  var ret = "";
                   
                   for(var k = 0; k < jsonObj.length; k++) {
-                      ret[k] = jsonObj[k][xHeader] + sep + jsonObj[k][yHeader];
+                      ret += jsonObj[k][xHeader] + sep + jsonObj[k][yHeader] + lsep;
                   }
+                  
+                  ret.substring(0, ret.length - lsep.length);
                   
                   callback(ret);
               }
@@ -63,7 +65,7 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            ['R', 'Parse csv from %s where X is %s, Y is %s with seperator %s', 'loadDataset', 'https://itaysharon.github.io/cal_dataset.csv', 'total_rooms', 'median_house_value', '|'],
+            ['R', 'Parse csv from %s where X is %s, Y is %s and they\'re seperated by %s and the list is seperated by %s', 'loadDataset', 'https://itaysharon.github.io/cal_dataset.csv', 'total_rooms', 'median_house_value', '|', ','],
             ['r', 'Shuffle list %s', 'shuffleList', ''],
             ['r', 'Split list %s with seperator %s and get item #%n', 'splitList', '', '|', 0],
         ]
