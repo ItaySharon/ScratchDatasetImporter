@@ -17,6 +17,7 @@
                   // Got the data - parse it and return the List, seperated with sep
                   
                   // CSV Parser
+		  var arr = datasetData.split('\n');
                   var jsonObj = [];
                   var headers = arr[0].split(',');
                   
